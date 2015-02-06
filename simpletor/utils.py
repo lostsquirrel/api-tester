@@ -72,7 +72,7 @@ def crop(img, sizes):
     for width, height in sizes:
         img_new = img.resize((width, height), Image.ANTIALIAS)
         output = cStringIO.StringIO()
-        img_new.save(output, fmt, quality = 95)
+        img_new.save(output, fmt, quality=95)
         img_data = output.getvalue()
         output.close()
         images.append(img_data)
