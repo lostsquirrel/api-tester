@@ -51,6 +51,7 @@ def doRequest(url, params, method, dataHandler=xx, token=''):
 # 			print "Error Message: %s" % page.messages
 	else :
 		print "HTTP STATUS CODE: %s" % rep.status_code
+		# print dir(rep)
 
 
 if __name__ == '__main__':
