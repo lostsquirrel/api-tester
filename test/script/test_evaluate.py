@@ -13,7 +13,10 @@ token_186 = '41d79d66bd424709bbd21b38851961c3'
 token_185 = 'a62876cc28eb4215b82256a3d04a9a09'
 
 def random_rank():
-    return int(Random().random() * 6)
+    x = int(Random().random() * 6) + 3 
+    if x > 5:
+        x = 5
+    return x
 
 def count_rating(total_rank):
     rating = 0
@@ -26,9 +29,8 @@ def count_rating(total_rank):
 
 def testAdd():
     communication_rank = random_rank()
-    content = 'drgdfg'
+    content = '1423536311402114'
     image = (
-        '/img/af7762b2aafc3e53077aa0a461b6c7cf.jpg',
         '/img/af7762b2aafc3e53077aa0a461b6c7cf.jpg',
         '/img/af7762b2aafc3e53077aa0a461b6c7cf.jpg')
     object_id = 28
@@ -39,7 +41,7 @@ def testAdd():
     params =dict(communication_rank=communication_rank,
                  content=content,
                  image=image,
-                 object_id=object_id,
+                 object_id=object_id,   
                  professional_rank=professional_rank,
                  punctual_rank=punctual_rank,
                  rating=rating,

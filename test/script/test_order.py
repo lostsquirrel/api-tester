@@ -104,9 +104,21 @@ def testRemoteTrade():
         url = '%s/remote/trade' % apiHost
         doRequest(url=url, params=params, method='post')
 
+def testDeleteOrder():
+    
+    order_ids = (
+        '1',
+        )
+    for order_id in order_ids:
+        user_id = '4'
+        params =dict(order_id = order_id)
+        url = '%s/api/order/delete' % apiHost
+        doRequest(url=url, params=params, method='post', token = token_186)
+        
 if __name__ == '__main__':
     # testApptStatus()
     # testCreateTrade()
-#     testOrders()
+    testOrders()
     # testRemoteTrade()
-    testUserTrade()
+    # testUserTrade()
+    # testDeleteOrder()
