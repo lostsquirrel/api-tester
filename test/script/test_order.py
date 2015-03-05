@@ -35,7 +35,7 @@ def testCreateTrade():
     '''
     sample_id = '28'
     address = '火卫31'
-    appt_date = "2015-02-10"
+    appt_date = "2015-03-11"
     appt_hour = 12
     remark = 'plkj'
     params =dict(sample_id = sample_id,address=address, appt_date = appt_date,
@@ -117,7 +117,7 @@ def testDeleteOrder():
         
 if __name__ == '__main__':
     # testApptStatus()
-    # testCreateTrade()
+    testCreateTrade()
     testOrders()
     # testRemoteTrade()
     # testUserTrade()
