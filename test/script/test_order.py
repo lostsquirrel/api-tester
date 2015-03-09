@@ -5,13 +5,14 @@ Created on 2015-02-06
 @author: lisong
 '''
 apiHost = 'http://192.168.19.244:10003/api/api'
+apiHost = 'http://115.28.134.4:8888'
 apiHost = 'http://localhost:8888'
 
 from base_test import doRequest
 
 token_186 = '41d79d66bd424709bbd21b38851961c3'
 token_185 = 'a62876cc28eb4215b82256a3d04a9a09'
-
+token_x = '0548f185654440138b53f4de467c7010'
 def testApptStatus():
     '''
     查看手艺人预约状态
@@ -35,16 +36,16 @@ def testCreateTrade():
     '''
     sample_id = '28'
     address = '火卫31'
-    appt_date = "2015-03-11"
-    appt_hour = 12
+    appt_date = "2015-03-22"
+    appt_hour = 14
     remark = 'plkj'
-    params =dict(sample_id = sample_id,address=address, appt_date = appt_date,
+    params =dict(sample_id = sample_id, address=address, appt_date = appt_date,
                  appt_hour = appt_hour, remark = remark)
     url = '%s/api/trade/create' % apiHost
     
     doRequest(url=url, params=params, method='post', token = token_186)
     
-# testCreateTrade()
+testCreateTrade()
 
 def testOrders():
     '''
@@ -116,9 +117,10 @@ def testDeleteOrder():
         doRequest(url=url, params=params, method='post', token = token_186)
         
 if __name__ == '__main__':
+    pass
     # testApptStatus()
-    testCreateTrade()
-    testOrders()
+#     testCreateTrade()
+#     testOrders()
     # testRemoteTrade()
     # testUserTrade()
     # testDeleteOrder()
