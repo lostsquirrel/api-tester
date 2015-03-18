@@ -29,10 +29,7 @@ def count_rating(total_rank):
 
 def testAdd():
     communication_rank = random_rank()
-    content = '1423536311402114'
-    image = (
-        '/img/af7762b2aafc3e53077aa0a461b6c7cf.jpg',
-        '/img/af7762b2aafc3e53077aa0a461b6c7cf.jpg')
+    content = '1423536311402114'# get_eva# get_evaluates()luates()
     object_id = 28
     professional_rank = random_rank()
     punctual_rank = random_rank()
@@ -40,16 +37,19 @@ def testAdd():
     order_no = '1423536311402114'
     params =dict(communication_rank=communication_rank,
                  content=content,
-                 image=image,
                  object_id=object_id,   
                  professional_rank=professional_rank,
                  punctual_rank=punctual_rank,
                  rating=rating,
                  order_no=order_no,
                  )
+    files =  [('file', ('foo.png', open('/home/lisong/Pictures/cdt.png', 'rb'), 'image/png')),
+              ('file', ('bar.jpg', open('/home/lisong/Pictures/hp.jpg', 'rb'), 'image/jpg'))]
     url = '%s/api/evaluate/add' % apiHost
     
-    doRequest(url=url, params=params, method='post', token = token_186)
+    doRequest(url=url, params=params, method='post', token = token_186, files = files)
+
+testAdd() 
 
 def get_evaluates():
     
@@ -59,7 +59,10 @@ def get_evaluates():
     url = '%s/api/evaluates' % apiHost
     
     doRequest(url=url, params=params, method='get')
+    
+# get_evaluates()
+
 if __name__ == '__main__':
     # java -Dsolr.solr.home=/home/lisong/git-repos/python/nail/solr -jar start.jar
-    testAdd() 
+    pass
     # get_evaluates()

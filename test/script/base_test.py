@@ -13,9 +13,9 @@ class DataWapper(dict):
 
 def xx (data) :
 	print 'Data :' 
-	print json.dumps(data, sort_keys=True, indent=4, separators=(',', ': '))
+	print json.dumps(data, sort_keys=True, indent=4, separators=(',', ': ')).decode('unicode-escape')
 		
-def doRequest(url, params, method, dataHandler=xx, token=''):
+def doRequest(url, params, method, dataHandler=xx, token='', files = None):
 	'''
 	Parameters:
 		url  - 请求url
@@ -33,7 +33,7 @@ def doRequest(url, params, method, dataHandler=xx, token=''):
 		rep = requests.get(url, params=params,headers=headers)
 	elif method.lower() == 'post' :
 # 		headers['ContentType']="application/x-www-form-urlencoded;charset=utf-8"
-		rep = requests.post(url, data=params,headers=headers)
+		rep = requests.post(url, data=params,headers=headers, files = files)
         # requests.
 	print rep.url
 	
@@ -51,7 +51,7 @@ def doRequest(url, params, method, dataHandler=xx, token=''):
 # 			print "Error Message: %s" % page.messages
 	else :
 		print "HTTP STATUS CODE: %s" % rep.status_code
-		print rep.content
+		print rep.content.decode('unicode-escape')
 		# print dir(rep)
 
 	
