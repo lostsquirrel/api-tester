@@ -4,15 +4,15 @@ Created on 2015-02-06
 
 @author: lisong
 '''
-apiHost = 'http://192.168.19.244:10003/api/api'
 apiHost = 'http://115.28.134.4:8888'
 apiHost = 'http://localhost:8888'
+apiHost = 'http://115.28.134.4'
 
 from base_test import doRequest
-
+import time
 token_186 = '41d79d66bd424709bbd21b38851961c3'
 token_185 = 'a62876cc28eb4215b82256a3d04a9a09'
-token_x = '0548f185654440138b53f4de467c7010'
+token_x = '8582667fad354710a8096876ae5512c4'
 def testApptStatus():
     '''
     查看手艺人预约状态
@@ -36,16 +36,32 @@ def testCreateTrade():
     '''
     sample_id = '28'
     address = '火卫31'
-    appt_date = "2015-03-22"
-    appt_hour = 14
-    remark = 'plkj'
+    appt_date = "2015-03-23"
+    appt_hour = 20
+    remark = time.time()
     params =dict(sample_id = sample_id, address=address, appt_date = appt_date,
                  appt_hour = appt_hour, remark = remark)
     url = '%s/api/trade/create' % apiHost
     
-    doRequest(url=url, params=params, method='post', token = token_186)
+    doRequest(url=url, params=params, method='post', token = token_x)
     
 testCreateTrade()
+
+def testOrder():
+    '''
+    用户订单列表
+    @param status: 订单状态（不选为全部）
+    @param page: 
+    @param page_size: 
+    '''
+    order_no = '1425868441183706'
+    with_log = True
+    params =dict(order_no = order_no, with_log = with_log)
+    url = '%s/api/order' % apiHost
+    
+    doRequest(url=url, params=params, method='get', token = token_x)
+    
+# testOrder()
 
 def testOrders():
     '''
@@ -54,13 +70,17 @@ def testOrders():
     @param page: 
     @param page_size: 
     '''
-    status = None
+    status = 'unfinished'
+    status = 'other'
+    status = 'finished'
+    status = 'wait_pay'
     page = None
     page_size = None
     params =dict(status = status, page = page,  page_size = page_size)
     url = '%s/api/orders' % apiHost
     
     doRequest(url=url, params=params, method='get', token = token_186)
+    
 # testOrders()
 
 def testUserTrade():
@@ -71,19 +91,22 @@ def testUserTrade():
     @param price: 实际费用（可选）
     '''
     order_nos = (
-        '1423460052979827',
-        '1423460513103859',
-        '1423460520892328',
-        '1423460539737171',
-        '1423460546511529',
+        '1426087672070166',
+        '1426087742571880',
+        '1426087749804033',
+        '1426087758781223',
+        '1426087766830154',
+        '1426087774645588',
         )
     for order_no in order_nos:
-        action = 'finishfinish'
+        action = 'finish'
         price = 3.14
         price = None
         params =dict(order_no = order_no, action = action,  price = price)
         url = '%s/api/user/trade' % apiHost
         doRequest(url=url, params=params, method='post', token = token_186)
+
+# testUserTrade()
 
 def testRemoteTrade():
     '''
@@ -92,18 +115,19 @@ def testRemoteTrade():
     @param order_no: 订单号
     '''
     order_nos = (
-        '1423536329987637',
-        '1423536326218577',
-        '1423536321715616',
-        '1423536316378362',
-        '1423536311402114',
-        '1423464544849774',
+        '1426087672070166',
+        '1426087742571880',
+        '1426087749804033',
+        '1426087758781223',
+        '1426087766830154',
+        '1426087774645588',
         )
     for order_no in order_nos:
-        user_id = '4'
+        user_id = '3'
         params =dict(order_no = order_no, user_id = user_id)
         url = '%s/remote/trade' % apiHost
         doRequest(url=url, params=params, method='post')
+# testRemoteTrade()
 
 def testDeleteOrder():
     
