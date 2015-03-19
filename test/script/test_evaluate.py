@@ -27,14 +27,14 @@ def count_rating(total_rank):
 
     return rating
 
-def testAdd():
+def test_add():
     communication_rank = random_rank()
-    content = '1423536311402114'# get_eva# get_evaluates()luates()
+    content = '1423536316378362'# get_eva# get_evaluates()luates()
     object_id = 28
     professional_rank = random_rank()
     punctual_rank = random_rank()
     rating = count_rating(communication_rank+professional_rank+punctual_rank)
-    order_no = '1423536311402114'
+    order_no = '1423536316378362'
     params =dict(communication_rank=communication_rank,
                  content=content,
                  object_id=object_id,   
@@ -43,13 +43,13 @@ def testAdd():
                  rating=rating,
                  order_no=order_no,
                  )
-    files =  [('file', ('foo.png', open('/home/lisong/Pictures/cdt.png', 'rb'), 'image/png')),
-              ('file', ('bar.jpg', open('/home/lisong/Pictures/hp.jpg', 'rb'), 'image/jpg'))]
+    files =  [('file', ('foo.png', open('/home/lisong/Pictures/logoquan13963635007.PNG', 'rb'), 'image/png')),
+              ('file', ('bar.jpg', open('/home/lisong/Pictures/Funny-Linux-Wallpapers-16.jpg', 'rb'), 'image/jpg'))]
     url = '%s/api/evaluate/add' % apiHost
     
     doRequest(url=url, params=params, method='post', token = token_186, files = files)
 
-testAdd() 
+test_add()
 
 def get_evaluates():
     
@@ -60,7 +60,7 @@ def get_evaluates():
     
     doRequest(url=url, params=params, method='get')
     
-# get_evaluates()
+get_evaluates()
 
 if __name__ == '__main__':
     # java -Dsolr.solr.home=/home/lisong/git-repos/python/nail/solr -jar start.jar
