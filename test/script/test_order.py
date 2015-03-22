@@ -34,18 +34,18 @@ def testCreateTrade():
     @param appt_hour: 预约时间
     @param remark: 用户备注
     '''
-    sample_id = '28'
+    sample_id = '31'
     address = '火卫31'
     appt_date = "2015-03-23"
-    appt_hour = 20
+    appt_hour = 14
     remark = time.time()
     params =dict(sample_id = sample_id, address=address, appt_date = appt_date,
                  appt_hour = appt_hour, remark = remark)
     url = '%s/api/trade/create' % apiHost
     
-    doRequest(url=url, params=params, method='post', token = token_x)
+    doRequest(url=url, params=params, method='post', token = token_185)
     
-testCreateTrade()
+# testCreateTrade()
 
 def testOrder():
     '''
@@ -91,22 +91,18 @@ def testUserTrade():
     @param price: 实际费用（可选）
     '''
     order_nos = (
-        '1426087672070166',
-        '1426087742571880',
-        '1426087749804033',
-        '1426087758781223',
-        '1426087766830154',
-        '1426087774645588',
+      (3,1426929219882431, '38e24253ff6e49bfb798f153ee596eba'),
+
         )
     for order_no in order_nos:
-        action = 'finish'
+        action = 'arrived'
         price = 3.14
         price = None
-        params =dict(order_no = order_no, action = action,  price = price)
+        params =dict(order_no = order_no[1], action = action,  price = price)
         url = '%s/api/user/trade' % apiHost
-        doRequest(url=url, params=params, method='post', token = token_186)
+        doRequest(url=url, params=params, method='post', token = order_no[2])
 
-# testUserTrade()
+testUserTrade()
 
 def testRemoteTrade():
     '''
@@ -115,18 +111,14 @@ def testRemoteTrade():
     @param order_no: 订单号
     '''
     order_nos = (
-        '1426087672070166',
-        '1426087742571880',
-        '1426087749804033',
-        '1426087758781223',
-        '1426087766830154',
-        '1426087774645588',
+        (3,1426929219882431),
+
         )
     for order_no in order_nos:
-        user_id = '3'
-        params =dict(order_no = order_no, user_id = user_id)
+        user_id = order_no[0]
+        params =dict(order_no = order_no[1], user_id = user_id)
         url = '%s/remote/trade' % apiHost
-        doRequest(url=url, params=params, method='post')
+        print doRequest(url=url, params=params, method='post')
 # testRemoteTrade()
 
 def testDeleteOrder():
