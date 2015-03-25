@@ -35,7 +35,7 @@ def  test_default_address():
     
     doRequest(url=url, params=params, method='post', token = token_185)
 
-# test_default_address()
+
 
 def test_get_default():
     '''
@@ -45,7 +45,7 @@ def test_get_default():
     url = '%s/api/user/address/default' % apiHost
     
     doRequest(url=url, params=params, method='get', token = token_186)
-# test_get_default()
+
 
 def test_addresses():
     '''
@@ -55,4 +55,10 @@ def test_addresses():
     url = '%s/api/user/addresses' % apiHost
     
     doRequest(url=url, params=params, method='get', token = token_186)
+
+
+if __name__ == '__main__':
+    pass
+# test_default_address()
+# test_get_default()
 # test_addresses()
