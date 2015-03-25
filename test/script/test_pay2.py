@@ -16,14 +16,16 @@ token_x = '8582667fad354710a8096876ae5512c4'
 
 def test_wxpay_signture():
     '''
-    查看手艺人预约状态
+    微信支付签名
     '''
     params =dict(
                  spbill_create_ip='221.3.133.229',
-                 order_no='1426087774645588'
+                 order_no='1434117126171844',
+                sign_on_server=True
                  )
     url = '%s/api/wxpay/signture' % apiHost
     
     doRequest(url=url, params=params, method='get', token = token_186)
     
 test_wxpay_signture()
+print time.time()

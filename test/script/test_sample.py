@@ -4,8 +4,8 @@ Created on 2015-03-20
 
 @author: lisong
 '''
-apiHost = 'http://localhost:8888'
 apiHost = 'http://115.28.134.4:8888'
+apiHost = 'http://localhost:8888'
 apiHost = 'http://115.28.134.4'
 
 from base_test import doRequest
@@ -21,22 +21,26 @@ def test_get_sample():
     params =dict(
                
                  )
-    url = '%s/api/sample/%s' % (apiHost, 32)
+    url = '%s/api/sample/%s' % (apiHost, 35)
     
     doRequest(url=url, params=params, method='get')
     
-    
-test_get_sample()
-
 def test_get_samples():
     '''
     添加收藏
     '''
     params =dict(
-               page = 1,
-               page_size = 50
+                artisan_id = 28000006,
+                category_id = 1,
+                order_by='create_time',
+#                 id = 35,
+                page = 1,
+                page_size = 20
                  )
     url = '%s/api/samples' % (apiHost)
     
     doRequest(url=url, params=params, method='get')
-# test_get_samples()
+    
+# test_get_sample()
+test_get_samples()
+print time.time()

@@ -31,7 +31,8 @@ def doRequest(url, params, method, dataHandler=xx, token='', files = None):
 	print rep.url
 	
 	if rep.status_code == 200:
-		dataHandler(rep.json())
+		print rep.content
+		# dataHandler(rep.json())
 	else :
 		print "HTTP STATUS CODE: %s" % rep.status_code
 		print rep.content.decode('unicode-escape')

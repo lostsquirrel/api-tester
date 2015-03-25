@@ -32,7 +32,10 @@ def test_add():
     
     order_nos = (
 
-        (4,1426921372398030, 31, token_185),
+        (3,1430142354129508, 35, token_186),
+#         (3,1426087774645588, 28, token_186),
+#         (4,1426924664053223, 31, token_185),
+#         (4,1426925393927963, 31, token_185),
         )
     for order_no in order_nos:
         communication_rank = random_rank()
@@ -50,14 +53,11 @@ def test_add():
                      rating=rating,
                      order_no=order_no[1],
                      )
-        files =  [('file', ('foo.jpg', open('/home/lisong/Pictures/th.jpeg', 'rb'), 'image/jpeg')),
+        files =  [('file', ('foo.jpg', open('/home/lisong/Pictures/%s.jpeg' % int(Random().random() * 9), 'rb'), 'image/jpeg')),
                   ('file', ('bar.jpg', open('/home/lisong/Pictures/%s.jpeg' % str(order_no[1] % 9), 'rb'), 'image/jpg'))]
         url = '%s/api/evaluate/add' % apiHost
         
-        doRequest(url=url, params=params, method='post', token = order_no[3], files = files)
-
-# test_add()
-
+        doRequest(url=url, params=params, method='post', token = order_no[3], files = [])
 
 def test_edit():
     
@@ -85,8 +85,6 @@ def test_edit():
         
         doRequest(url=url, params=params, method='post', token = order_no[3], files = files)
         
-test_edit()
-
 def get_evaluates():
     
     params =dict(sample_id=28,
@@ -96,9 +94,16 @@ def get_evaluates():
     
     doRequest(url=url, params=params, method='get')
     
-# get_evaluates()
+def test_get_evaluates_by_artisan():
+    params =dict(artisan_id='28000006',
+                 )
+    url = '%s/api/evaluates/artisan' % apiHost
+    
+    doRequest(url=url, params=params, method='get')
 
 if __name__ == '__main__':
-    # java -Dsolr.solr.home=/home/lisong/git-repos/python/nail/solr -jar start.jar
+    test_add()
+    # test_edit()
+    # get_evaluates()sample
+#     test_get_evaluates_by_artisan()
     pass
-    # get_evaluates()
