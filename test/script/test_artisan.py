@@ -7,6 +7,7 @@ Created on 2015-03-12
 apiHost = 'http://115.28.134.4:8888'
 apiHost = 'http://115.28.134.4'
 apiHost = 'http://localhost:8888'
+apiHost = 'http://115.28.134.4'
 
 from base_test import doRequest
 token_186 = '41d79d66bd424709bbd21b38851961c3'
@@ -24,13 +25,20 @@ def testApptStatus():
     
     doRequest(url=url, params=params, method='get')
     
+<<<<<<< HEAD
 def test_mecat():
     '''
     我的大咖
+=======
+def test_my_artisan():
+    '''
+    查看手艺人详情
+>>>>>>> c8c43509cb2c3336cea3c2b9f223cd68d4d6bf1e
     '''
     params =dict()
     url = '%s/api/my_mecat' % (apiHost)
     
+<<<<<<< HEAD
     doRequest(url=url, params=params, method='get', token=token_185)
     
 def test_my_artisans():
@@ -49,3 +57,10 @@ def test_remove_mecat():
 test_mecat()
 # test_remove_mecat()
 # test_my_artisans()
+=======
+    doRequest(url=url, params=params, method='get', token='db5fd4825b7944f29fa39d5922a3a5e9')
+    
+    
+# testApptStatus()
+test_my_artisan()
+>>>>>>> c8c43509cb2c3336cea3c2b9f223cd68d4d6bf1e

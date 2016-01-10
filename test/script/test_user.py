@@ -33,7 +33,10 @@ def test_default_address():
     params = dict(address_id=6)
     url = '%s/api/user/address/default' % apiHost
 
+<<<<<<< HEAD
     doRequest(url=url, params=params, method='post', token=token_185)
+=======
+>>>>>>> c8c43509cb2c3336cea3c2b9f223cd68d4d6bf1e
 
 
 def test_get_default():
@@ -42,8 +45,13 @@ def test_get_default():
     '''
     params = dict()
     url = '%s/api/user/address/default' % apiHost
+<<<<<<< HEAD
 
     doRequest(url=url, params=params, method='get', token=token_186)
+=======
+    
+    doRequest(url=url, params=params, method='get', token = token_186)
+>>>>>>> c8c43509cb2c3336cea3c2b9f223cd68d4d6bf1e
 
 
 def test_addresses():
@@ -52,6 +60,7 @@ def test_addresses():
     '''
     params = dict()
     url = '%s/api/user/addresses' % apiHost
+<<<<<<< HEAD
 
     doRequest(url=url, params=params, method='get', token=token_186)
 
@@ -72,3 +81,14 @@ if __name__ == '__main__':
     # test_default_address()
     # test_get_default()
     # test_addresses()
+=======
+    
+    doRequest(url=url, params=params, method='get', token = token_186)
+
+
+if __name__ == '__main__':
+    pass
+# test_default_address()
+# test_get_default()
+# test_addresses()
+>>>>>>> c8c43509cb2c3336cea3c2b9f223cd68d4d6bf1e
